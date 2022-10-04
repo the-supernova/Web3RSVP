@@ -1,3 +1,5 @@
+import { ApolloProvider } from "@apollo/client";
+import client from "../apollo-client";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
@@ -9,7 +11,7 @@ import { publicProvider } from "wagmi/providers/public";
 const infuraId = process.env.NEXT_PUBLIC_INFURA_ID;
 
 const { chains, provider } = configureChains(
-  [chain.polygon],
+  [chain.polygonMumbai],
   [infuraProvider({ infuraId }), publicProvider()]
 );
 
@@ -28,9 +30,11 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ApolloProvider client={client}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ApolloProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );
