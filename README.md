@@ -1,8 +1,8 @@
 >You must set up your blockchain wallet to use this application. Follow the instructions below to set up your wallet.
 
-#Set Up Your Wallet
+# Set Up Your Wallet
 
-##Download Coinbase Wallet
+## Download Coinbase Wallet
 Note: If you already have a crypto wallet like MetaMask that interacts with the Ethereum blockchain, you may skip setting up Coinbase Wallet.
 
 You will need Chrome browser for this setup. Download the browser [here](https://www.google.com/chrome/downloads/).
