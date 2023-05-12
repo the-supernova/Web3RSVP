@@ -10,6 +10,7 @@ const UPCOMING_EVENTS = gql`
       name
       eventTimestamp
       imageURL
+      fallbackImageURL
     }
   }
 `;
@@ -51,6 +52,7 @@ export default function Home() {
                 name={event.name}
                 eventTimestamp={event.eventTimestamp}
                 imageURL={event.imageURL}
+                fallbackImageURL={event.fallbackImageURL}
               />
             </li>
           ))}

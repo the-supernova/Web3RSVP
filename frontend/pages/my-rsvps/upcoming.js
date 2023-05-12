@@ -15,6 +15,7 @@ const MY_UPCOMING_RSVPS = gql`
           name
           eventTimestamp
           imageURL
+          fallbackImageURL
         }
       }
     }
@@ -62,6 +63,7 @@ export default function MyUpcomingRSVPs() {
                         name={rsvp.event.name}
                         eventTimestamp={rsvp.event.eventTimestamp}
                         imageURL={rsvp.event.imageURL}
+                        fallbackImageURL={rsvp.event.fallbackImageURL}
                       />
                     </li>
                   );

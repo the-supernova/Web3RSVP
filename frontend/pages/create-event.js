@@ -64,6 +64,7 @@ export default function CreateEvent() {
       const rsvpContract = connectContract();
 
       if (rsvpContract) {
+        console.log("Creating new event...");
         let deposit = ethers.utils.parseEther(refund);
         let eventDateAndTime = new Date(`${eventDate} ${eventTime}`);
         let eventTimestamp = eventDateAndTime.getTime();

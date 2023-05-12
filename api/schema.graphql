@@ -5,6 +5,7 @@ type Event @entity {
   description: String
   link: String
   imageURL: String
+  fallbackImageURL: String
   eventOwner: Bytes!
   eventTimestamp: BigInt!
   maxCapacity: BigInt!

@@ -44,6 +44,7 @@ function Event({ event }) {
     try {
       const rsvpContract = connectContract();
       if (rsvpContract) {
+        console.log("Creating new RSVP...");
         const txn = await rsvpContract.createNewRSVP(event.id, {
           value: event.deposit,
           gasLimit: 300000,
@@ -106,9 +107,7 @@ function Event({ event }) {
         <div className="flex flex-wrap-reverse lg:flex-nowrap">
           <div className="w-full pr-0 lg:pr-24 xl:pr-32">
             <div className="mb-8 w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-              {event.imageURL && (
-                <Image src={event.imageURL} alt="event image" layout="fill" />
-              )}
+                <Image unoptimized src={event.imageURL} alt="event image" onError={({ target }) => target.src= `${event.fallbackImageURL}`} layout="fill" />
             </div>
             <p>{event.description}</p>
           </div>
@@ -147,22 +146,22 @@ function Event({ event }) {
                 Event has ended
               </span>
             )}
-            <div className="flex item-center">
+            <div className="flex items-center">
               <UsersIcon className="w-6 mr-2" />
               <span className="truncate">
                 {event.totalRSVPs}/{event.maxCapacity} attending
               </span>
             </div>
-            <div className="flex item-center">
+            <div className="flex items-center">
               <TicketIcon className="w-6 mr-2" />
               <span className="truncate">1 RSVP per wallet</span>
             </div>
             <div className="flex items-center">
               <EmojiHappyIcon className="w-10 mr-2" />
               <span className="truncate">
-                Hosted by {event.eventOwner}
+                Hosted by &nbsp;
                 <a
-                  className="text-indigo-800 truncate hover:underline"
+                  className="text-indigo-800  hover:underline"
                   href={`${process.env.NEXT_PUBLIC_TESTNET_EXPLORER_URL}address/${event.eventOwner}`}
                   target="_blank"
                   rel="noreferrer"
@@ -199,6 +198,7 @@ export async function getServerSideProps(context) {
           totalRSVPs
           totalConfirmedAttendees
           imageURL
+          fallbackImageURL
           rsvps {
             id
             attendee {

@@ -19,6 +19,7 @@ const MY_PAST_EVENTS = gql`
       maxCapacity
       totalRSVPs
       imageURL
+      fallbackImageURL
     }
   }
 `;
@@ -64,6 +65,7 @@ export default function MyPastEvents() {
                     name={event.name}
                     eventTimestamp={event.eventTimestamp}
                     imageURL={event.imageURL}
+                    fallbackImageURL={event.fallbackImageURL}
                   />
                   <Link href={`/my-events/past/${event.id}`}>
                     <a className="text-indigo-800 text-sm truncate hover:underline">
