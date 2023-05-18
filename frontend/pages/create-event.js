@@ -35,6 +35,7 @@ export default function CreateEvent() {
       image: imageData,
       imagePath: getRandomImage(),
     };
+    setLoading(true);
 
     try {
       const response = await fetch("/api/store-event-data", {
@@ -77,7 +78,6 @@ export default function CreateEvent() {
           eventDataCID,
           { gasLimit: 900000 }
         );
-        setLoading(true);
         console.log("Minting...", txn.hash);
         let wait = await txn.wait();
         console.log("Minted -- ", txn.hash);

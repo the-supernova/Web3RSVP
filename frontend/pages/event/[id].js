@@ -73,7 +73,7 @@ function Event({ event }) {
       <Head>
         <title>{event.name} | web3rsvp</title>
         <meta name="description" content={event.name} />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.svg" />
       </Head>
       <section className="relative py-12">
         {loading && (
